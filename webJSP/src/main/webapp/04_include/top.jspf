@@ -1,0 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div style="height: 100px;background-color: lightblue">
+
+	<% 
+		int num = 1234;
+	String username="이순신";
+	
+	%>
+	<%=num %>, <%=username %>
+	
+</div>
