@@ -9,6 +9,12 @@ public class BoardVO {
     private int hit;
     private String ip;
     
+    public BoardVO() {}
+    public BoardVO(int no, String subject, String userid) {
+    	this.no=no;
+    	this.subject=subject;
+    	this.userid=userid;
+    }
     
     public int getNo() {
 		return no;

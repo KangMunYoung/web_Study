@@ -36,6 +36,8 @@
     <!-- Editable user database that can also be used by
          UserDatabaseRealm to authenticate users
     -->
+    <!-- 9/7 DBCP====================================================================================================-->
+    <Resource auth="container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/myoracle" password="tiger" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="c##scott"/>
     <Resource auth="Container" description="User database that can be updated and saved" factory="org.apache.catalina.users.MemoryUserDatabaseFactory" name="UserDatabase" pathname="conf/tomcat-users.xml" type="org.apache.catalina.UserDatabase"/>
   </GlobalNamingResources>
 
@@ -153,7 +155,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="webApp" path="/webApp" reloadable="true" source="org.eclipse.jst.jee.server:webApp"/><Context docBase="webJSP" path="/webJSP" reloadable="true" source="org.eclipse.jst.jee.server:webJSP"/><Context docBase="webMVC" path="/webMVC" reloadable="true" source="org.eclipse.jst.jee.server:webMVC"/></Host>
+      <Context docBase="webMVC" path="/webMVC" reloadable="true" source="org.eclipse.jst.jee.server:webMVC"/><Context docBase="webJSP" path="/webJSP" reloadable="true" source="org.eclipse.jst.jee.server:webJSP"/><Context docBase="webApp" path="/webApp" reloadable="true" source="org.eclipse.jst.jee.server:webApp"/></Host>
     </Engine>
   </Service>
 </Server>

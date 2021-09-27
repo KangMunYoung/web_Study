@@ -89,8 +89,52 @@ public class BoardDAO extends DBConnection {
 		return vo;
 	}
 //	글수정
-	
+	public int boardUpdate(BoardVO vo) {
+		int result = 0;
+		
+		try {
+			dbConn();
+			
+			sql = "update board set subject=?, content=? where no=? and userid=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, vo.getSubject());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setInt(3, vo.getNo());
+			pstmt.setString(4, vo.getUserid());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		} 
+		
+		return result;
+	}
 //	글삭제
+	public int boardDelete(int no, String userid) {
+		int result = 0;
+		try {
+			dbConn();
+			
+			sql = "delete from board where no=? and userid=?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, userid);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbClose();
+		}
+		return result;
+	}
+	
 //	조회수증가
 	public void hitCount(int no) {
 		try {
